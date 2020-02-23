@@ -349,7 +349,7 @@ ModbusRTU.prototype.open = function(callback) {
                  */
                 if (!transaction.lengthUnknown && data.length !== transaction.nextLength) {
                     error = "Data length error, expected " +
-                        transaction.nextLength + " got " + data.length + " DATA: " + data;
+                        transaction.nextLength + " got " + data.length + " DATA: " + data.toString();
                     if (transaction.next)
                         transaction.next(new Error(error));
                     return;
