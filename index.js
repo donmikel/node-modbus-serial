@@ -284,7 +284,7 @@ ModbusRTU.prototype.open = function(callback) {
              */
             modbus._port.on("data", function(data) {
                 // set locale helpers variables
-                console.log("DATA:" + data);
+
                 var transaction = modbus._transactions[modbus._port._transactionIdRead];
 
                 // the _transactionIdRead can be missing, ignore wrong transaction it's
@@ -349,7 +349,7 @@ ModbusRTU.prototype.open = function(callback) {
                  */
                 if (!transaction.lengthUnknown && data.length !== transaction.nextLength) {
                     error = "Data length error, expected " +
-                        transaction.nextLength + " got " + data.length;
+                        transaction.nextLength + " got " + data.length + " DATA: " + data;
                     if (transaction.next)
                         transaction.next(new Error(error));
                     return;
